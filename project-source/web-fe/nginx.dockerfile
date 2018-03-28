@@ -1,17 +1,18 @@
-FROM nginx:latest
+FROM nginx:1.13.6
 
-VOLUME /var/cache/nginx
+# VOLUME /public
 
 # Copy custom nginx config
+RUN mkdir -p /data/nginx/cache
 COPY ./config/nginx.conf /etc/nginx/nginx.conf
 
 # Copy custom nginx config
-COPY ./public /var/www/public
+#COPY ./public /var/www/public
 
-EXPOSE 80
+# EXPOSE 80
 
-ENTRYPOINT ["nginx"]
-CMD ["-g", "daemon off;"]
+# ENTRYPOINT ["nginx"]
+# CMD ["-g", "daemon off;"]
 
 # To build:
 # docker build -f nginx.dockerfile --tag ace/nginx ../

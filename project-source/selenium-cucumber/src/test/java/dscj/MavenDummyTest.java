@@ -33,6 +33,7 @@ public class MavenDummyTest
      */
     public void testApp()
     {
+        System.out.println("Running MavenDummyTest.testApp()");
         assertTrue( true );
     }
 }

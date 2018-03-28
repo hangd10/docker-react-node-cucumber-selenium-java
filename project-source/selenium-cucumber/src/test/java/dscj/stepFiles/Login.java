@@ -28,15 +28,20 @@ public class Login {
 	@Before
 	public void setup() throws MalformedURLException {
 		// local
-		System.setProperty("webdriver.chrome.driver", "./resources/chromedriver-2.37");
-		this.driver = new ChromeDriver();
+		// System.setProperty("webdriver.chrome.driver", "./resources/chromedriver-2.37");
+		// this.driver = new ChromeDriver();
+
+		// docker seleninum/hub
+		DesiredCapabilities dcap = DesiredCapabilities.firefox();
+
+		this.driver = new RemoteWebDriver(new URL("http://hub:4444/wd/hub"), dcap);
+		
+		//this.driver = new RemoteWebDriver(new URL("http://172.19.0.3:4444/wd/hub"), dcap);
+		//this.driver = new RemoteWebDriver(new URL("http://172.19.0.4:5555/wd/hub"), dcap);
+
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
-
-		// docker seleninum/hub
-		//DesiredCapabilities dcap = DesiredCapabilities.chrome();
-		//this.driver = new RemoteWebDriver(new URL("http://localhost:172.17.04:5555/wd/hub"), dcap);
 	}
 	
 	// @Before
