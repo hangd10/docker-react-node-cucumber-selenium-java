@@ -91,7 +91,7 @@
   mvn:
     image: maven:3.3.9-jdk-8
     volumes:
-      - ../selenium-cucumber:/usr/src/mvn-src
+      - ./selenium-cucumber:/usr/src/mvn-src
     working_dir: /usr/src/mvn-src
     command: mvn clean test -Dselenium-hub.host=hub
     links:
