@@ -13,7 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-public class LocalAPI {
+public class APIRestCall {
 	private String httpStatus = "";
 
 	@Before
@@ -26,10 +26,10 @@ public class LocalAPI {
 
 	}
 	
-	@Given("^API call to dummy endpoint")
-	public void client_api_invokation() throws Throwable {
+	@Given("^API call to (.*) endpoint")
+	public void client_api_invokation(String url) throws Throwable {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet request = new HttpGet("http://nginx/api/dummies");
+		HttpGet request = new HttpGet(url);
 		HttpResponse httpResponse = httpClient.execute(request);
 		httpStatus = httpResponse.getStatusLine().getStatusCode()+ "";
 	}
