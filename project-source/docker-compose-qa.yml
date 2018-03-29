@@ -1,6 +1,7 @@
 ##
 #
 #   To start the containers below, run...
+#
 #     docker-compose -f docker-compose-qa.yml up
 #
 ##
