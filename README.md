@@ -2,8 +2,6 @@
 
 - [What Is This ?](#what-is-this)
 - [Installation/Setup](#installation-setup)
-- [Web FrontEnd](#web-front-end)
-- [Node API](#node-api)
 - [Cucumber](#cucumber)
 - [Selenium](#selenium)
 - [Running the Test Suite](#running-test-suite)
