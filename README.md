@@ -6,7 +6,6 @@
 - [Node API](#node-api)
 - [Cucumber](#cucumber)
 - [Selenium](#selenium)
-- [Docker](#docker)
 - [Running the Test Suite](#running-test-suite)
 
 ## What is This ?
