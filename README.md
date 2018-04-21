@@ -8,26 +8,20 @@
 
 ## What is This ?
 
-This is a QA Automation Starter Pack.  It uses nginx (web server) and node (api server) for the runtime application component.  Also configured is a cucumber test suite with selenium for browser based testing along with junit for api level testing.  All this is packaged into Docker containers and is intended to be run on your local machine.
+This is a QA Automation Starter Pack.  Cucumber test suite with selenium for browser based testing along with junit for api level testing.  This is configured to be run on your local machine.
 
 This starter pack is just for reference.  You should copy these files onto your project repository.
 
 ## Installation / Setup
 
-The only software you need to install is Docker.
+The software you need to install is Docker.
 
-* [Mac](https://docs.docker.com/docker-for-mac/install/)
-* [Windows](https://docs.docker.com/docker-for-windows/install/)
+* [Maven](https://maven.apache.org/)
+* [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+> You can also configure Docker and avoid the installation software steps above.  See [Master Branch](https://github.com/hangd10/docker-react-node-cucumber-selenium-java) for reference.
 
 >NOTE : If you want to commit files onto github, then you will need [git](https://git-scm.com/downloads) as well.
-
-## Web FrontEnd
-
-The frontend nginx webserver will host your html, css, javascript and assets (images, pdfs, etc).  It was created using facebook's create-react-app starter pack.  The nginx web server is also configured to proxy any /api request to be forwarded and serviced by the node api server.
-
-## Node API
-
-The node api server was created using a yeoman [starter pack](https://github.com/diegohaz/rest).  It has a simple /dummy endpoint that will return an empty array.
 
 ## Cucumber
 
@@ -41,37 +35,15 @@ This model fits very well with Pair Programming, where dev/qa can work on the im
 
 [Selenium](https://www.seleniumhq.org/) is used for browser based automated tests.  A sample test scenario to open google.com, performs a search and verifies the results are provided.
 
-## Docker
-
-Why do I need Docker ?  Docker is not a hard requirement to run your automation on your local machine.  It just makes things much, much easier.  Without docker, you will have to install Maven, JDK, Selenium Drivers, NPM/Node and maybe more... along with custom configurations in your workspace.  Docker has available "images", which has everything you need without any additional configuration.
-
-For more information on Docker, go [here](https://www.docker.com/).
-
 ## Running the Test Suite
 
-Open up your ssh terminal and navigate to the project-source directory.  Run the command below.
+> The current [pom.xml](https://github.com/hangd10/docker-react-node-cucumber-selenium-java/blob/aceMobileSettings/project-source/selenium-cucumber/pom.xml) assumes you have JDK 1.8.0_91.  Edit line 33 to match your local jdk installation.
+
+Open up your ssh terminal and navigate to the project-source/selenium-cucumber directory.  Run the command below.
 
 ```sh
-docker-compose up
+mvn clean test
 ```
 
-This downloads all the images from the docker image repository.  It will then start up all the containers.  Lastly, it will run `mvn test`.
-
-After all the containers are running, when adding/updating any test cases, execute the following to re-run the test again. (without having to stop the other containers)
-
-```sh
-./rerunTest.sh
-```
-
-This will ONLY execute `mvn clean test` in another container.
-
-## Common Docker Commands
-
-```sh
-docker-compose down (shuts down all the containers)
-
-docker ps -a (list all docker containers)
-
-docker logs THE_CONTAINER_NAME (displays the logs of the container)
-```
+This will run the test suite as .feature files defined in [featureFiles](https://github.com/hangd10/docker-react-node-cucumber-selenium-java/tree/aceMobileSettings/project-source/selenium-cucumber/src/test/java/dscj/featureFIles)
 
